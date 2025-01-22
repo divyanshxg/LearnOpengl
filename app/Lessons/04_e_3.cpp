@@ -8,7 +8,6 @@
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void process_input(GLFWwindow *window);
 
-float mixOffset = 0.5f;
 int main() {
   glfwInit();
 
@@ -36,8 +35,8 @@ int main() {
   //     "./resources/Shaders/03/fragmentShader.glsl"); // you can name your
   //     shader
   Shader ourShader(
-      "./resources/Shaders/04/e4_vertexShader.glsl",
-      "./resources/Shaders/04/e4_fragmentShader.glsl"); // you can name your
+      "./resources/Shaders/04/e3_vertexShader.glsl",
+      "./resources/Shaders/04/e3_fragmentShader.glsl"); // you can name your
                                                         // shader files however
                                                         // you like
 
@@ -45,10 +44,10 @@ int main() {
   // ------------------------------------------------------------------
   float vertices[] = {
       // positions          // colors           // texture coords
-      0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
-      0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
-      -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
-      -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f  // top left
+      0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 0.55f, 0.55f, // top right
+      0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.55f, 0.45f, // bottom right
+      -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.45f,  0.45f,  // bottom left
+      -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.45f,  0.55f   // top left
   };
   unsigned int indices[] = {
       0, 1, 3, // first triangle
@@ -160,7 +159,6 @@ int main() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     // bind textures on corresponding texture units
-    ourShader.setFloat("mixOffset", mixOffset);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture1);
     glActiveTexture(GL_TEXTURE1);
@@ -194,10 +192,6 @@ int main() {
 // frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void process_input(GLFWwindow *window) {
-  if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-    mixOffset += 0.01f;
-  if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-    mixOffset -= 0.01f;
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
 }
