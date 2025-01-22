@@ -34,8 +34,8 @@ int main() {
   //     "./resources/Shaders/03/fragmentShader.glsl"); // you can name your
   //     shader
   Shader ourShader(
-      "./resources/Shaders/03/e3_vertexShader.glsl",
-      "./resources/Shaders/03/e3_fragmentShader.glsl"); // you can name your
+      "./resources/Shaders/03/e2_vertexShader.glsl",
+      "./resources/Shaders/03/e2_fragmentShader.glsl"); // you can name your
                                                         // shader files however
                                                         // you like
 
@@ -83,6 +83,7 @@ int main() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    ourShader.setFloat("uOffset", 0.5f);
     // render the triangle
     ourShader.use();
     glBindVertexArray(VAO);

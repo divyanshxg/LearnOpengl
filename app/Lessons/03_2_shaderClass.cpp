@@ -29,15 +29,9 @@ int main() {
   }
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-  // Shader ourShader(
-  //     "./resources/Shaders/03/vertexShader.glsl",
-  //     "./resources/Shaders/03/fragmentShader.glsl"); // you can name your
-  //     shader
   Shader ourShader(
-      "./resources/Shaders/03/e3_vertexShader.glsl",
-      "./resources/Shaders/03/e3_fragmentShader.glsl"); // you can name your
-                                                        // shader files however
-                                                        // you like
+      "./resources/Shaders/03/vertexShader.glsl",
+      "./resources/Shaders/03/fragmentShader.glsl"); // you can name your shader
 
   // set up vertex data (and buffer(s)) and configure vertex attributes
   // ------------------------------------------------------------------
